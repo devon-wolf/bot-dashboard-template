@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const URL = 'https://minion-server.herokuapp.com';
+const URL = 'https://bot-server-template.herokuapp.com';
 
 export async function getAllResponses() {
 	const response = await request.get(`${URL}/responses`);

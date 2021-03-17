@@ -9,7 +9,7 @@ export default class Header extends Component {
 				<h2>Bot Dashboard</h2>
 
 				{this.props.token
-						?	<>
+						?	<nav>
 							<NavLink 
 								exact 
 								activeClassName={style.current} 
@@ -27,15 +27,17 @@ export default class Header extends Component {
 							</NavLink>
 
 							<span className={style.logout} onClick={this.props.handleLogoutClick}>Logout</span>
-							</>
+							</nav>
 
-						:	<NavLink 
+						:	<nav>
+							<NavLink 
 								exact 
 								activeClassName={style.current} 
 								className={style.navItem} 
 								to="/login">
 								Login
 							</NavLink>
+							</nav>
 					
 					}
 				<div className={style.clearBar}></div>

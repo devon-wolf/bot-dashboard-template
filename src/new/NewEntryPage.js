@@ -24,10 +24,10 @@ export default class NewEntryPage extends Component {
 
 				{this.state.responses.length > 0 &&
 				<div>
-					<p>Triggers to be added:</p>
+					<p>Prompts to be added:</p>
 					<ul>
 						{this.state.responses.map(response =>
-							<li key={response.regex}>{response.regex}</li>)}
+							<li key={response.prompt}>{response.prompt}</li>)}
 					</ul>
 				</div>}
 			</main>

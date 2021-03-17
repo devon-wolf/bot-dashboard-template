@@ -4,15 +4,15 @@ import { addNewResponse } from '../utils/server-utils.js'
 export default class NewEntryForm extends Component {
 	state = {
 		responses: [],
-		regexInput: '',
-		images: [],
-		imageInput: '',
+		promptInput: '',
+		options: [],
+		optionInput: '',
 	}
 
 	handleSubmit = async e => {
 		e.preventDefault();
-		const { regexInput, responses } = this.state;
-		if (regexInput) await this.addResponseObject();
+		const { promptInput, responses } = this.state;
+		if (promptInput) await this.addResponseObject();
 
 		await responses.forEach(async response => await addNewResponse(response, this.props.token));
 
@@ -20,60 +20,60 @@ export default class NewEntryForm extends Component {
 	}
 
 	addResponseObject = () => {
-		const { regexInput, images, imageInput, responses } = this.state;
-		if (imageInput) this.handleImageAdd();
+		const { promptInput, options, optionInput, responses } = this.state;
+		if (optionInput) this.handleOptionAdd();
 
 		const currentResponses = responses;
-		currentResponses.push({ regex: regexInput, images });
+		currentResponses.push({ prompt: promptInput, options });
 
 		this.props.addResponses(currentResponses);
 
 		this.setState({
 			responses: currentResponses,
-			regexInput: '',
-			images: []
+			promptInput: '',
+			options: []
 		});
 	}
 
-	handleImageAdd = () => {
-		const { images, imageInput } = this.state
-		const currentImages = images;
-		currentImages.push(imageInput);
+	handleOptionAdd = () => {
+		const { options, optionInput } = this.state
+		const currentOptions = options;
+		currentOptions.push(optionInput);
 		this.setState({ 
-			images: currentImages,
-			imageInput: ''
+			options: currentOptions,
+			optionInput: ''
 		 });
 	}
 
 	render() {
-		const { regexInput, imageInput } = this.state;
+		const { promptInput, optionInput } = this.state;
 
 		return (
 			<form onSubmit={this.handleSubmit}>
 					<label>
-						<span>Trigger word</span>
+						<span>Prompt word</span>
 						<input
-						value={regexInput}
-						onInput={e => this.setState({ regexInput: e.target.value})}
+						value={promptInput}
+						onInput={e => this.setState({ promptInput: e.target.value})}
 						/>
 					</label>
 
 					<label>
-						<span>Link to image</span>
+						<span>Response option(s)</span>
 						<input
-						value={imageInput}
-						onInput={e => this.setState({ imageInput: e.target.value })}/>
+						value={optionInput}
+						onInput={e => this.setState({ optionInput: e.target.value })}/>
 						
-						{/* Removed ability to add multiple images until it is better handled in the edit functionality */}
+						{/* Removed ability to add multiple options until it is better handled in the edit functionality */}
 						{/* <button
 						type="button"
-						onClick={this.handleImageAdd}>
-							Add this image
+						onClick={this.handleOptionAdd}>
+							Add this option
 						</button>
 
 						<div>
-							{images.map(image =>
-								<img alt="added item" src={image} key={image} />)
+							{options.map(option =>
+								<img alt="added item" src={option} key={option} />)
 							}
 						</div> */}
 						

@@ -10,8 +10,8 @@ export default class ResponseTable extends Component {
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Trigger Word</th>
-						<th>Images</th>
+						<th>Prompt</th>
+						<th>Options</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -20,12 +20,12 @@ export default class ResponseTable extends Component {
 						<ResponseRow 
 							fullItem={item}
 							id={item.id}
-							trigger={item.regex}
-							images={item.images}
+							prompt={item.prompt}
+							options={item.options}
 							handleDeleteClick={e => this.props.handleDeleteClick(item.id)}
 							token={this.props.token}
 							updateFunction={this.props.updateFunction}
-							key={item.id + item.regex}
+							key={item.id + item.prompt}
 						/>
 					)}
 				</tbody>

@@ -1,27 +1,30 @@
 .header {
-	background-color: gold;
+	background-color: hsl(233, 80%, 90%);
 	padding: .25rem;
 	position: sticky;
 	top: 0px;
 	height: 12vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .header h2 {
 	margin: 0;
-	color: darkslateblue;
+	color: dimgray;
 }
 
 .navItem {
 	margin: .5rem;
 	float: left;
 	text-decoration: none;
-	color: darkslateblue;
+	color: dimgray;
 }
 
 .logout {
 	cursor: pointer;
 	margin: .5rem;
-	color: darkslateblue;
+	color: dimgray;
 	float: right;
 }
 

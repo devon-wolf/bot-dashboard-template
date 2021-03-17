@@ -5,31 +5,31 @@ import { editResponse } from '../utils/server-utils.js'
 export default class ResponseRow extends Component {
 	state = {
 		editing: false,
-		triggerInput: '',
-		imageInput: '',
+		promptInput: '',
+		optionInput: '',
 	}
 
 	handleEditClick = e => {
 		this.setState({
 			editing: !this.state.editing,
-			triggerInput: '',
-			imageInput: ''
+			promptInput: '',
+			optionInput: ''
 		});
 	}
 
-	// this does not at all handle the possibility of multiple images
+	// this does not at all handle the possibility of multiple options
 	handleSubmitClick = async () => {
-		const { id, trigger, images, token } = this.props;
-		const { triggerInput, imageInput } = this.state;
+		const { id, prompt, options, token } = this.props;
+		const { promptInput, optionInput } = this.state;
 		
 		const editedObject = {};
-		editedObject.images = [];
-		triggerInput 
-			? editedObject.regex = triggerInput 
-			: editedObject.regex = trigger;
-		imageInput 
-			? editedObject.images.push(imageInput) 
-			: editedObject.images = images;
+		editedObject.options = [];
+		promptInput 
+			? editedObject.prompt = promptInput 
+			: editedObject.prompt = prompt;
+		optionInput 
+			? editedObject.options.push(optionInput) 
+			: editedObject.options = options;
 
 		await editResponse(id, editedObject, token);
 
@@ -47,27 +47,27 @@ export default class ResponseRow extends Component {
 					{this.props.id}
 				</td>
 
-				<td className={style.triggerCell}>
+				<td className={style.promptCell}>
 					{this.state.editing
 						? <input 
-							placeholder={this.props.trigger}
-							onInput={e => this.setState({ triggerInput: e.target.value })}/>
+							placeholder={this.props.prompt}
+							onInput={e => this.setState({ promptInput: e.target.value })}/>
 
-						: <span>{this.props.trigger}</span>
+						: <span>{this.props.prompt}</span>
 					}
 				</td>
 
-				<td className={style.imageCell}>
-					{this.props.images.map(image =>
-						<div key={image}>
+				<td className={style.optionCell}>
+					{this.props.options.map(option =>
+						<div key={option}>
 							<img 
-							src={image} 
+							src={option} 
 							alt="response" 
 							/>
 							{this.state.editing && 
 							<input
-							placeholder={image} 
-							onInput={e => this.setState({ imageInput: e.target.value })}/>}
+							placeholder={option} 
+							onInput={e => this.setState({ optionInput: e.target.value })}/>}
 						</div>)}
 				</td>
 

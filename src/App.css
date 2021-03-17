@@ -8,13 +8,13 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: darkslateblue;
-  color: gold;
+  background-color: dimgray;
+  color: hsl(233, 49%, 90%);
 }
 
 form {
-	background-color: gold;
-  color: darkslateblue;
+	background-color: hsl(233, 80%, 90%);;
+  color: dimgray;
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
@@ -33,8 +33,8 @@ form input {
 }
 
 form button {
-  background-color: darkslateblue;
-  color: gold;
+  background-color: dimgray;
+  color: hsl(233, 49%, 90%);;
   border: none;
   padding: .25rem;
   margin: .25rem;

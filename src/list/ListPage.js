@@ -24,6 +24,7 @@ export default class ListPage extends Component {
 	}
 	
 	render() {
+		console.log(this.state);
 		return (
 			<main>
 				<ResponseTable 

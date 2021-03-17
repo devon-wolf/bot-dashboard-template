@@ -1,9 +1,9 @@
 import request from 'superagent'
 
-const URL = 'https://minion-server.herokuapp.com/auth';
+const URL = 'https://bot-server-template.herokuapp.com';
 
 async function getUserAuth(username, password, authRoute) {
-	const response = await request.post(`${URL}/${authRoute}`)
+	const response = await request.post(`${URL}/auth/${authRoute}`)
 			.send({ username, password });
 
 		return response.body;
